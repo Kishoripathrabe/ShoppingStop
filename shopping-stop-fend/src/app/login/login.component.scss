@@ -1,0 +1,23 @@
+.overlay {
+    width: 100%;
+    height: 100%;
+  }
+
+  mat-spinner {
+    align-self: center;
+    margin-top: 2rem;
+  }
+
+  button {
+    color: white !important;
+  }
+
+   mat-card {
+    padding: 3rem;
+    width: 14rem;
+    position: absolute;
+    top:25%;
+    left: 38%;
+    margin-left: 0;
+    margin-right: 0;
+  }

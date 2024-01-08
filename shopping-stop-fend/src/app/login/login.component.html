@@ -1,1 +1,27 @@
-<p>login works!</p>
+<form (ngSubmit)="this.loginForm.valid && login()" class="overlay" fxLayoutAlign="center center" fxLayout="column"
+fxLayoutGap="40px" [formGroup]="loginForm">
+<mat-card fxLayout="column">
+    <h2>login Form</h2>
+    
+    <mat-form-field fxLayout="row">
+        <input formControlName="email" type="email" matInput placeholder="Email" />
+        <mat-error>Valid Email is Required</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field fxLayout="row">
+        <input formControlName="password" type="text" matInput placeholder="Password" />
+        <mat-error>This Field is Required</mat-error>
+    </mat-form-field>
+
+    <div style="margin-top: 2rem" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="end">
+        <button (click)="toSignUpPage()" type="button" color="primary" mat-raised-button>
+            Go To SignUp
+        </button>
+        &nbsp;
+        <button type="submit" color="accent" mat-raised-button>login</button>
+    </div>
+    <mat-spinner *ngIf="this.loading" color="accent" diameter="40"></mat-spinner>
+</mat-card>
+</form>
+

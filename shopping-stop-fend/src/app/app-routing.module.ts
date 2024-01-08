@@ -8,7 +8,8 @@ const routes: Routes = [
   {
     path: '', 
     children: [
-      {path: '', component: SignupComponent},
+      {path: 'signup', component: SignupComponent},
+      {path: '', component: LoginComponent}
       ]
   },
 ];

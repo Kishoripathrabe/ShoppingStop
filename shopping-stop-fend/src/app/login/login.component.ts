@@ -26,6 +26,7 @@ export class LoginComponent {
    this.http.get("http://localhost:5000/api/user/login",{params:this.loginForm.value}).subscribe((data:any) => {
     if(data.token){
       AuthUtils.setAuthToken(data.token)
+      AuthUtils.setUserType(data.type)
       this.loading = false;
       this.alert.success(data.msg);
       this.router.navigate(['home']);

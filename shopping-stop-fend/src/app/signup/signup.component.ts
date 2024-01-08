@@ -27,11 +27,11 @@ export class SignupComponent {
    this.http.post("http://localhost:5000/api/user/signup",this.signupForm.value).subscribe((data:any) => {
       this.loading = false;
       this.alert.success("User Created Successfully");
-      this.router.navigate(['login']);
+      this.router.navigate(['']);
     });
   }
 
   toLoginPage() {
-    this.router.navigate(['login']);
+    this.router.navigate(['']);
   }
 }

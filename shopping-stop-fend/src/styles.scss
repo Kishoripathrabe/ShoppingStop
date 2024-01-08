@@ -1,1 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+  /* Add these styles to make the snackbar red */
+.red-snackbar {
+    background-color: #e57373; /* Red background color */
+    color: white; /* Text color */
+  }
+  
+  /* Optional: You can customize other styles like border-radius, box-shadow, etc. */
+  .red-snackbar {
+    background-color: #e57373;
+    color: white;
+    border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add box-shadow for a subtle shadow effect */
+  }
+  
+  /* Add these styles to make the snackbar green */
+.green-snackbar {
+    background-color: #81c784; /* Green background color */
+    color: white; /* Text color */
+  }
+  
+  /* Optional: You can customize other styles like border-radius, box-shadow, etc. */
+  .green-snackbar {
+    background-color: #81c784;
+    color: white;
+    border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add box-shadow for a subtle shadow effect */
+  }
+  

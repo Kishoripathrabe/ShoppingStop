@@ -1,1 +1,35 @@
-<p>signup works!</p>
+    <form (ngSubmit)="this.signupForm.valid && signup()" class="overlay" fxLayoutAlign="center center" fxLayout="column"
+    fxLayoutGap="40px" [formGroup]="signupForm">
+    <mat-card fxLayout="column">
+        <h2>Signup Form</h2>
+        
+        <mat-form-field fxLayout="row">
+            <input formControlName="email" type="email" matInput placeholder="Email" />
+            <mat-error>Valid Email is Required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field fxLayout="row">
+            <input formControlName="first_name" type="text" matInput placeholder="First Name" />
+            <mat-error>This Field is Required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field fxLayout="row">
+            <input formControlName="last_name" type="text" matInput placeholder="Last Name" />
+            <mat-error>This Field is Required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field fxLayout="row">
+            <input formControlName="password" type="text" matInput placeholder="Password" />
+            <mat-error>This Field is Required</mat-error>
+        </mat-form-field>
+
+        <div style="margin-top: 2rem" fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="end">
+            <button (click)="toLoginPage()" type="button" color="primary" mat-raised-button>
+                Go To Login
+            </button>
+            &nbsp;
+            <button type="submit" color="accent" mat-raised-button>Signup</button>
+        </div>
+        <mat-spinner *ngIf="this.loading" color="accent" diameter="40"></mat-spinner>
+    </mat-card>
+</form>

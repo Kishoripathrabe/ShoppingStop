@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertService } from '../services/alert.service';
+import { AuthUtils } from '../utility/auth-utils';
 
 @Component({
   selector: 'app-login',
@@ -15,8 +16,8 @@ export class LoginComponent {
 
   constructor( private http:HttpClient, private router: Router,private alert:AlertService) {
     this.loginForm = new FormGroup({
-      email: new FormControl(null, [Validators.required, Validators.email]),
-      password: new FormControl(null, [Validators.required])
+      email: new FormControl("mj@gmail.com", [Validators.required, Validators.email]),
+      password: new FormControl("mj@gmail.com", [Validators.required])
     });
   }
 
@@ -24,6 +25,7 @@ export class LoginComponent {
     this.loading = true;
    this.http.get("http://localhost:5000/api/user/login",{params:this.loginForm.value}).subscribe((data:any) => {
     if(data.token){
+      AuthUtils.setAuthToken(data.token)
       this.loading = false;
       this.alert.success(data.msg);
       this.router.navigate(['home']);

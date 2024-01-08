@@ -30,11 +30,9 @@ export class LoginComponent {
       this.loading = false;
       this.alert.success(data.msg);
       this.router.navigate(['home']);
-    }else{
-      this.loading = false;
-      this.alert.error(data.msg);
     }
-
+    },(err)=>{
+      this.alert.success(err.error.msg);
     });
   }
 

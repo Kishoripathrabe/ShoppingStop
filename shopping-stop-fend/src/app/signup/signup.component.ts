@@ -28,6 +28,8 @@ export class SignupComponent {
       this.loading = false;
       this.alert.success("User Created Successfully");
       this.router.navigate(['']);
+    },(err)=>{
+      this.alert.error(err.error.msg);
     });
   }
 

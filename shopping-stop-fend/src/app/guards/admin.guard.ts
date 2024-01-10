@@ -16,7 +16,7 @@ export class AdminGuard implements CanActivate {
       if(AuthUtils.getUserType()=="admin"){
         return true
       }else{
-        this.router.navigate(['home'])
+        this.router.navigate(['dashboard'])
         return false
       }
     }

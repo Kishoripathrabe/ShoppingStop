@@ -27,6 +27,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AlertService } from './services/alert.service';
 import { HomeComponent } from './home/home.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { UserMgmComponent } from './user-mgm/user-mgm.component';
+import { ProductMgmComponent } from './product-mgm/product-mgm.component';
+import { CustomerPageComponent } from './customer-page/customer-page.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,11 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
     LoginComponent,
     SignupComponent,
     HomeComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    DashboardComponent,
+    UserMgmComponent,
+    ProductMgmComponent,
+    CustomerPageComponent
   ],
   imports: [
     BrowserModule,

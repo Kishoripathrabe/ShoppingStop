@@ -15,7 +15,7 @@ export class AnonGuard implements CanActivate {
       if(!AuthUtils.getAuthToken()){
         return true;
       }else{
-        this.router.navigate(['home']);
+        this.router.navigate(['dashboard']);
         return false
       }
   }

@@ -1,1 +1,22 @@
-<p>admin-page works!</p>
+<!-- admin-page.component.html -->
+<nav class="navbar navbar-expand-lg navbar-dark">  
+    <div class="collapse navbar-collapse " id="navbarNav">
+      <ul class="navbar-nav">
+        <!-- Button to navigate to User Management -->
+        <li class="nav-item">
+          <a class="btn btn-primary btn-portal" routerLink="/adminpage">User Management</a>
+        </li>
+        &nbsp;&nbsp;
+
+        <!-- Button to navigate to Product Management -->
+        <li class="nav-item">
+          <a class="btn btn-success btn-portal" routerLink="/adminpage/product-management">Product Management</a>
+        </li>
+      </ul>
+    </div>
+</nav>
+  
+  <div class="container mt-3">
+     <router-outlet></router-outlet>
+  </div>
+  

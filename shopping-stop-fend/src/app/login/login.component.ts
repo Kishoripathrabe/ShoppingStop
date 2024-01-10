@@ -29,7 +29,7 @@ export class LoginComponent {
       AuthUtils.setUserType(data.type)
       this.loading = false;
       this.alert.success(data.msg);
-      this.router.navigate(['home']);
+      this.router.navigate(['dashboard']);
     }
     },(err)=>{
       this.alert.error(err.error.msg);

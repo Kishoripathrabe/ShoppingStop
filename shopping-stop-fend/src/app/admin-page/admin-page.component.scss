@@ -10,10 +10,7 @@ body, html {
     border-radius: 10px; /* Rounded corners for a card-like appearance */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Increased box shadow for a lift effect */
     height: 80vh; /* Full height of the viewport */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
 }
 
 .btn-portal {

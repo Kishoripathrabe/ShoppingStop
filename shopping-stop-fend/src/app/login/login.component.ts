@@ -16,8 +16,8 @@ export class LoginComponent {
 
   constructor( private http:HttpClient, private router: Router,private alert:AlertService) {
     this.loginForm = new FormGroup({
-      email: new FormControl("mj@gmail.com", [Validators.required, Validators.email]),
-      password: new FormControl("mj@gmail.com", [Validators.required])
+      email: new FormControl("kp@gmail.com", [Validators.required, Validators.email]),
+      password: new FormControl("kp@gmail.com", [Validators.required])
     });
   }
 
@@ -29,7 +29,7 @@ export class LoginComponent {
       AuthUtils.setUserType(data.type)
       this.loading = false;
       this.alert.success(data.msg);
-      this.router.navigate(['dashboard']);
+      this.router.navigate(['customerpage']);
     }
     },(err)=>{
       this.alert.error(err.error.msg);

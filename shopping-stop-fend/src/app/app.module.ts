@@ -31,6 +31,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserMgmComponent } from './user-mgm/user-mgm.component';
 import { ProductMgmComponent } from './product-mgm/product-mgm.component';
 import { CustomerPageComponent } from './customer-page/customer-page.component';
+import { TruncatePipe } from './truncate.pipe';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { CustomerPageComponent } from './customer-page/customer-page.component';
     DashboardComponent,
     UserMgmComponent,
     ProductMgmComponent,
-    CustomerPageComponent
+    CustomerPageComponent,
+    TruncatePipe
   ],
   imports: [
     BrowserModule,

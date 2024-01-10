@@ -32,7 +32,7 @@ export class LoginComponent {
       this.router.navigate(['home']);
     }
     },(err)=>{
-      this.alert.success(err.error.msg);
+      this.alert.error(err.error.msg);
     });
   }
 

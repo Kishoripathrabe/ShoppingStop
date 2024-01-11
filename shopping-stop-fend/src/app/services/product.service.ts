@@ -21,4 +21,7 @@ export class ProductService {
   getAllProducts() {
     return this.http.get(this.apiUrl + "/get/all/products",{headers : this.getAuthHeaders() });
   }
+  deleteProduct(id : any) {
+    return this.http.request('delete',this.apiUrl + `/delete/product/${id}`,{ headers: this.getAuthHeaders()} )
+  }
 }

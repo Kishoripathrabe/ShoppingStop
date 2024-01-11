@@ -42,5 +42,15 @@ export class ProductMgmComponent {
       );
     }
   }
+  deleteProduct(id : any) {
+    console.log("product deleted", id);
+    this.productService.deleteProduct(id).subscribe((data: any) => {
+      this.alert.success("Product is deleted", data);
+    },
+    (error) => {
+      console.error('Error deleting product: ', error);
+    }
+    )
+  }
 
 }

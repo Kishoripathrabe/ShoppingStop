@@ -1,0 +1,19 @@
+/* dashboard.component.scss */
+
+  
+  .mat-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+  .mat-icon-button {
+    margin-left: 50px;
+    margin-right: 50px;
+    line-height: 22px;
+  }
+
+  
+  .dashboard-content {
+    padding: 16px;
+  }
+  

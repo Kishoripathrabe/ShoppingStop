@@ -32,6 +32,10 @@ import { UserMgmComponent } from './user-mgm/user-mgm.component';
 import { ProductMgmComponent } from './product-mgm/product-mgm.component';
 import { CustomerPageComponent } from './customer-page/customer-page.component';
 import { TruncatePipe } from './truncate.pipe';
+import { HeaderComponent } from './header/header.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
+import { CartComponent } from './cart/cart.component';
+import { MyAccountComponent } from './my-account/my-account.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +48,11 @@ import { TruncatePipe } from './truncate.pipe';
     UserMgmComponent,
     ProductMgmComponent,
     CustomerPageComponent,
-    TruncatePipe
+    TruncatePipe,
+    HeaderComponent,
+    WishlistComponent,
+    CartComponent,
+    MyAccountComponent
   ],
   imports: [
     BrowserModule,

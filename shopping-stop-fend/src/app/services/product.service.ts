@@ -8,7 +8,7 @@ import { AuthUtils } from '../utility/auth-utils';
 })
 export class ProductService {
   private apiUrl = 'http://localhost:5000/api/admin'; // Replace with your actual API endpoint
-
+  private apiUserUrl = 'http://localhost:5000/api/user';
   constructor(private http: HttpClient) {}
 
   addProduct(product: any): Observable<any> {
@@ -27,8 +27,15 @@ export class ProductService {
   deleteProduct(id : any) {
     return this.http.request('delete',this.apiUrl + `/delete/product/${id}`,{ headers: this.getAuthHeaders()} )
   }
-}
-function Of(Editedproduct: any) {
-  throw new Error('Function not implemented.');
+
+  getAllProductsCustumer() {
+    return this.http.get(this.apiUserUrl + "/get/all/products",{headers : this.getAuthHeaders() });
+  }
+  addToWishlist(id: any) {
+    return this.http.patch(this.apiUserUrl+"/add/wishlist",{pid:id},{headers : this.getAuthHeaders() });
+  }
+  getWishlist(){
+    return this.http.get(this.apiUserUrl + "/get/wishlist",{headers : this.getAuthHeaders() });
+  }
 }
 

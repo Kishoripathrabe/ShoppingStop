@@ -1,5 +1,5 @@
 <!-- add-product.component.html -->
-<form [formGroup]="productForm" (ngSubmit)="addProduct()" class="container p-2 mt-5">
+<form [formGroup]="productForm" (ngSubmit)="addEditProduct()" class="container p-2 mt-5">
     <div class="form-group">
       <label for="name">Product Name:</label>
       <input formControlName="name" type="text" id="name" class="form-control" required>
@@ -22,7 +22,8 @@
     
     <br>
   
-    <button type="submit" class="btn btn-primary">Add Product</button>
+    <button type="submit" class="btn btn-primary">{{addShow?"Add Product":"Edit Product"}}</button>
+    
   </form>
   <hr> <hr>
   <div class="container">
@@ -44,7 +45,7 @@
             </p>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-button >Edit</button>
+            <button mat-button (click)="editProduct(prod)" >Edit</button>
             <button mat-button (click)="deleteProduct(prod._id)">Delete</button>
           </mat-card-actions>
         </mat-card>

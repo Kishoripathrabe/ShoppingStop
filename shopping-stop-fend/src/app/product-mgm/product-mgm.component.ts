@@ -36,6 +36,8 @@ export class ProductMgmComponent {
     let existingProductObject = this.productForm.value;
     existingProductObject._id = this.pid;
     this.productService.editProduct(existingProductObject).subscribe((data: any) => {
+        this.alert.success('Product Updated successfully');
+        this.getAllProducts();
         this.addShow=true;
         this.productForm.setValue({});
       });
@@ -74,6 +76,7 @@ export class ProductMgmComponent {
     this.productService.deleteProduct(id).subscribe(
       (data: any) => {
         this.alert.success('Product is deleted', data);
+        this.getAllProducts();
       },
       (error) => {
         console.error('Error deleting product: ', error);

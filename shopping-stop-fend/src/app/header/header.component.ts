@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthUtils } from '../utility/auth-utils';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-    
+    logout(){
+      AuthUtils.removeAuthToken();
+      AuthUtils.removeUserType();
+      location.reload()
+    }
 }

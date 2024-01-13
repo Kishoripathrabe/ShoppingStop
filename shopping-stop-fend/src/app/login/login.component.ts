@@ -17,7 +17,7 @@ export class LoginComponent {
   constructor( private http:HttpClient, private router: Router,private alert:AlertService) {
     this.loginForm = new FormGroup({
       email: new FormControl("kp@gmail.com", [Validators.required, Validators.email]),
-      password: new FormControl("kp@gmail.com", [Validators.required])
+      password: new FormControl("mj@gmail.com", [Validators.required])
     });
   }
 

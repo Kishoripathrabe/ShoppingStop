@@ -28,9 +28,7 @@ addToCart(id: any){
 
 }
 addToWishlist(id : any){
-  console.log("myid",id);
   this.productService.addToWishlist(id).subscribe((data:any) => {
-    console.log("data=> ", data);
     this.alert.success(data?.msg);
     this.products=this.products.filter((res:any)=>{
         return (res._id!==id)

@@ -17,26 +17,9 @@ export class HomeComponent {
     this.productService.getAllProductsCustumer().subscribe((res: any) => {
       console.log(res)
       this.products = res
-      // this.products got products
-      // this.productService.getWishlist().subscribe((wres) => {
-      //   this.wishlistArr = wres;
-
-      //   // this.products [{}{}{id}{}{}{}{}{}] this.wishlist [{}{id}{}{}]
-      //   this.wishlistMatching();
-      // });
     });
   }
-  // wishlistMatching() {
-  //   this.products.forEach((prod: any) => {
-  //     this.wishlistArr.map((data: any) => {
-  //       if (prod._id == data._id) {
-  //         return (prod['inWishlist'] = true);
-  //       } else {
-  //         return false;
-  //       }
-  //     });
-  //   });
-  // }
+
   addToCart(id: any) {
     console.log(id);
   }

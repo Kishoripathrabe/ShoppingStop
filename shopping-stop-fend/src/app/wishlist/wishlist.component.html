@@ -1,6 +1,6 @@
 <h2>Wishlist</h2>
 <div class="container">
-    <div class="row mb-3">
+    <div class="row mb-3" *ngIf="products.length>0">
       <div class="col-4 mb-4" *ngFor ="let prod of products">
         <mat-card  >
           <mat-card-header>

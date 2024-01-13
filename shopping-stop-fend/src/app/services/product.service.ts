@@ -37,5 +37,8 @@ export class ProductService {
   getWishlist(){
     return this.http.get(this.apiUserUrl + "/get/wishlist",{headers : this.getAuthHeaders() });
   }
+  addToCart(id : any) {
+    return this.http.patch(this.apiUserUrl+"/add/tocart",{pid:id},{headers : this.getAuthHeaders() })
+  }
 }
-
+  

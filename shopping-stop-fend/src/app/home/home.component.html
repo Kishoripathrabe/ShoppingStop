@@ -18,7 +18,7 @@
             </p>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-button mat-raised-button color="primary" (click)="addToCart(prod._id)" >Add to Cart</button>
+            <button mat-button mat-raised-button color="primary" (click)="addToCart(prod._id)" >{{prod.inCart?'Go to Cart' : 'Add to Cart'}}</button>
             <button mat-button mat-raised-button color="accent" (click)="addToWishlist(prod._id)" >{{prod.inWishlist?'Remove from Wishlist':'Add to Wishlist'}}</button>
           </mat-card-actions>
         </mat-card>

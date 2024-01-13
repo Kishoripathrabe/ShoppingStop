@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AlertService } from '../services/alert.service';
 import { ProductService } from '../services/product.service';
 
@@ -10,7 +11,7 @@ import { ProductService } from '../services/product.service';
 export class HomeComponent {
   products: any ;
   wishlistArr: any;
-  constructor( private alert: AlertService, private productService: ProductService ) {
+  constructor( private alert: AlertService, private productService: ProductService,private router:Router ) {
     this.getAllProducts();
   }
   getAllProducts() {
@@ -21,7 +22,19 @@ export class HomeComponent {
   }
 
   addToCart(id: any) {
-    console.log(id);
+    this.productService.addToCart(id).subscribe((data: any) =>{
+      this.products = this.products.map((res: any) => {
+        if (res._id == id) {
+          if(data.incartalready){
+            this.router.navigate(['customerpage', 'cart']);
+          }else{
+            res['inCart'] = true;
+            this.alert.success(data?.msg);
+          }
+        }
+        return res;
+      });
+    })
   }
   addToWishlist(id: any) {
     console.log(id);

@@ -1,1 +1,36 @@
-<p>my-account works!</p>
+
+   <div class="container mt-5">
+    <div class="card">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span>User Profile</span>
+        <button (click)="toggleEditMode()" class="btn btn-sm btn-secondary" ><mat-icon>{{isEditMode?"close":"edit"}}</mat-icon>
+        </button>
+      </div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <li class="row m-2">
+            <strong class="col-2">Email:</strong>
+            <span class="col-2" *ngIf="!isEditMode">{{ user?.email }}</span>
+            <input class="col form-control" *ngIf="isEditMode" disabled="true" [(ngModel)]="user.email" />
+          </li>
+          <li class="row m-2">
+            <strong  class="col-2">Password:</strong>
+            <span class="col-2" *ngIf="!isEditMode">{{ user?.password }}</span>
+            <input class="col form-control" *ngIf="isEditMode" [(ngModel)]="user.password" />
+          </li>
+          <li class="row m-2">
+            <strong class="col-2">First Name:</strong>
+            <span class="col-2" *ngIf="!isEditMode">{{ user?.first_name }}</span>
+            <input class="col form-control" *ngIf="isEditMode" [(ngModel)]="user.first_name" />
+          </li>
+          <li class="row m-2">
+            <strong class="col-2">Last Name:</strong>
+            <span class="col-2" *ngIf="!isEditMode">{{ user?.last_name }}</span>
+            <input class="col form-control" *ngIf="isEditMode" [(ngModel)]="user.last_name" />
+          </li>
+        </ul>
+        <button class="btn col-12    btn-success mt-3" *ngIf="isEditMode" (click)="saveChanges()">Save Changes</button>
+      </div>
+    </div>
+  </div>
+  

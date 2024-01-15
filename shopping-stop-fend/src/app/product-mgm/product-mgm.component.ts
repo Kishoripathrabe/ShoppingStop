@@ -66,6 +66,9 @@ export class ProductMgmComponent {
   editProduct(product: any) {
     this.pid = product._id;
     delete product._id;
+    delete product.inWishlist;
+    delete product.inCart;
+
     let pdata = product;
     this.addShow = false;
     this.productForm.setValue(pdata);

@@ -29,6 +29,7 @@ export class CartComponent implements OnInit {
     }else{
       this.productService.decreasequantity(item._id).subscribe(res =>{
     item.quantity--;
+    this.getTotal();
     })
     }
   }

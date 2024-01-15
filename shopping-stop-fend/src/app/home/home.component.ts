@@ -13,10 +13,12 @@ export class HomeComponent {
   wishlistArr: any;
   constructor( private alert: AlertService, private productService: ProductService,private router:Router ) {
     this.getAllProducts();
+    this.productService.showAddToCart().subscribe((data: any) => {
+      console.log(data);
+    })
   }
   getAllProducts() {
     this.productService.getAllProductsCustumer().subscribe((res: any) => {
-      console.log(res)
       this.products = res
     });
   }
@@ -35,6 +37,7 @@ export class HomeComponent {
         return res;
       });
     })
+
   }
   addToWishlist(id: any) {
     console.log(id);

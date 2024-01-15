@@ -40,5 +40,17 @@ export class ProductService {
   addToCart(id : any) {
     return this.http.patch(this.apiUserUrl+"/add/tocart",{pid:id},{headers : this.getAuthHeaders() })
   }
+  showAddToCart(){
+    return this.http.get(this.apiUserUrl + "/get/cart/products",{headers : this.getAuthHeaders() })
+  }
+  decreasequantity(productId: any){
+    return this.http.patch(this.apiUserUrl + "/decrease/product/quantity",{prodId: productId},{headers : this.getAuthHeaders() })
+  }
+  increasequantity(productId : any) {
+    return this.http.patch(this.apiUserUrl + "/increase/product/quantity",{prodId: productId},{headers : this.getAuthHeaders() })
+  }
+  deleteFromCart(productId : any) {
+    return this.http.patch(this.apiUserUrl + "/delete/product/cart",{prodId: productId},{headers : this.getAuthHeaders() })
+  }
 }
-  
+

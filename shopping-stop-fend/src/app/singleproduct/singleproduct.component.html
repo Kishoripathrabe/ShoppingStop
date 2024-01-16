@@ -1,0 +1,23 @@
+<!-- single-product.component.html -->
+
+<!-- product-details.component.html -->
+
+<div *ngIf="product" class="container mt-5">
+    <div class="row">
+        <div class = "col-3">
+            <img [src]="product.picUrl" alt="{{ product.name }} Image" class="card-img-top img-fluid">
+        </div>
+
+      <div class="col" >
+        <h2 class="card-title">{{ product.name }}</h2>
+        <p class="card-text">{{ product.desc }}</p>
+        <p class="card-text"><strong>Price:</strong> ${{ product.price }}</p>
+        <!-- <p>Quantity</p> -->
+        <button class="btn btn-primary mt-5">Add to Cart</button>
+        <button class="btn btn-secondary mt-5">Add to Wishlist</button>
+      </div>
+    </div>
+    <button mat-button color="primary" (click)="goBack()">Go Back</button>
+  </div>
+  
+  

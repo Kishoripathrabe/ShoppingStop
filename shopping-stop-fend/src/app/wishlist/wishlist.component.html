@@ -6,7 +6,7 @@
           <mat-card-header>
             <mat-card-title>{{prod.name}}</mat-card-title>
           </mat-card-header>
-          <img mat-card-image [src]="prod.picUrl" style="height:200px;width: 200px;object-fit: cover;">
+          <img mat-card-image [src]="prod.picUrl" routerLink="/customerpage/singleproduct/{{ prod._id }}"  style="height:200px;width: 200px;object-fit: cover;">
           <mat-card-content>
             <p>
               Price:- <b>{{prod.price}}.00</b>

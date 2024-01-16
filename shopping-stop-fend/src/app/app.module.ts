@@ -36,6 +36,7 @@ import { HeaderComponent } from './header/header.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { CartComponent } from './cart/cart.component';
 import { MyAccountComponent } from './my-account/my-account.component';
+import { SingleproductComponent } from './singleproduct/singleproduct.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { MyAccountComponent } from './my-account/my-account.component';
     HeaderComponent,
     WishlistComponent,
     CartComponent,
-    MyAccountComponent
+    MyAccountComponent,
+    SingleproductComponent
   ],
   imports: [
     BrowserModule,

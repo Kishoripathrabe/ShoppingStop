@@ -54,4 +54,7 @@ export class CartComponent implements OnInit {
     this.getTotal();
     })
   }
+  proceedToBuy() {
+    console.log("proceed to buy button");
+  }
 }

@@ -11,6 +11,7 @@ import { NonadminGuard } from './guards/nonadmin.guard';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { MyAccountComponent } from './my-account/my-account.component';
+import { ProceedComponent } from './proceed/proceed.component';
 import { ProductMgmComponent } from './product-mgm/product-mgm.component';
 import { SignupComponent } from './signup/signup.component';
 import { SingleproductComponent } from './singleproduct/singleproduct.component';
@@ -29,7 +30,6 @@ const routes: Routes = [
         { path: 'myaccount', component: MyAccountComponent },
         { path: '',redirectTo:"home",pathMatch:"full"},
         { path: 'singleproduct/:id', component: SingleproductComponent}
-
 
       ]},
       {path:'adminpage',canActivate:[AuthGuard,AdminGuard],component:AdminPageComponent,children:[

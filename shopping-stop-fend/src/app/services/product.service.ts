@@ -52,5 +52,8 @@ export class ProductService {
   deleteFromCart(productId : any) {
     return this.http.patch(this.apiUserUrl + "/delete/product/cart",{prodId: productId},{headers : this.getAuthHeaders() })
   }
+  getProductById(id: any) {
+    return this.http.get(this.apiUserUrl + "/get/productbyid/"+ id,{headers : this.getAuthHeaders() })
+  }
 }
 

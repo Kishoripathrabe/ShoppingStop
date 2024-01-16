@@ -27,24 +27,17 @@ export class SingleproductComponent implements OnInit {
     });
   }
   getProductDetails(): void {
-    this.productService.getAllProductsCustumer().subscribe(
-      (data: any) => {
-        this.product = data.find(
-          (product: any) => product._id == this.productId
-        );
-        console.log(this.product);
-      },
-      (error) => {
-        console.error('Error fetching product details:', error);
-      }
-    );
-    return this.product;
-  }
+    if(this.productId){
+      this.productService.getProductById(this.productId).subscribe((data: any) => {
+        this.product=data;
+    });
+    }
+
+    }
   goBack(): void {
     window.history.back();
   }
   addToCart(id: any) {
-    console.log(id);
     this.productService.addToCart(id).subscribe((data: any) => {
       if (data.incartalready) {
         this.router.navigate(['customerpage', 'cart']);

@@ -55,5 +55,18 @@ export class ProductService {
   getProductById(id: any) {
     return this.http.get(this.apiUserUrl + "/get/productbyid/"+ id,{headers : this.getAuthHeaders() })
   }
+  addAddress(address: any) {
+    return this.http.post(this.apiUserUrl + "/create/address", {addressdetails: address},{headers : this.getAuthHeaders() } );
+  }
+  getAddress() {
+    return this.http.get(this.apiUserUrl + "/get/address",{headers : this.getAuthHeaders() })
+  }
+  editAddress(users: any) {
+    return this.http.patch(this.apiUserUrl + "/edit/address",{editUserAddress: users},{headers : this.getAuthHeaders() })
+  }
+
+  deleteAddress(addId:any){
+    return this.http.patch(this.apiUserUrl + "/delete/address",{addId},{headers : this.getAuthHeaders() })
+  }
 }
 

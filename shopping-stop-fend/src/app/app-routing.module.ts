@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddressComponent } from './address/address.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { CartComponent } from './cart/cart.component';
 import { CustomerPageComponent } from './customer-page/customer-page.component';
@@ -10,6 +11,7 @@ import { NonadminGuard } from './guards/nonadmin.guard';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { MyAccountComponent } from './my-account/my-account.component';
+import { PaymentComponent } from './payment/payment.component';
 import { ProductMgmComponent } from './product-mgm/product-mgm.component';
 import { SignupComponent } from './signup/signup.component';
 import { SingleproductComponent } from './singleproduct/singleproduct.component';
@@ -24,11 +26,12 @@ const routes: Routes = [
       {path:'customerpage',canActivate:[AuthGuard,NonadminGuard],component:CustomerPageComponent,children:[
         { path: 'home', component: HomeComponent },
         { path: 'cart', component: CartComponent },
+        { path: 'address', component: AddressComponent},
+        { path: 'payment/:addid', component: PaymentComponent},
         { path: 'wishlist', component: WishlistComponent },
         { path: 'myaccount', component: MyAccountComponent },
+        { path: 'singleproduct/:id', component: SingleproductComponent},
         { path: '',redirectTo:"home",pathMatch:"full"},
-        { path: 'singleproduct/:id', component: SingleproductComponent}
-
       ]},
       {path:'adminpage',canActivate:[AuthGuard,AdminGuard],component:AdminPageComponent,children:[
         { path: '', redirectTo: 'user-management', pathMatch: 'full' },

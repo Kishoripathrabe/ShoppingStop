@@ -37,6 +37,10 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { CartComponent } from './cart/cart.component';
 import { MyAccountComponent } from './my-account/my-account.component';
 import { SingleproductComponent } from './singleproduct/singleproduct.component';
+import { AddressComponent } from './address/address.component';
+import { PaymentComponent } from './payment/payment.component';
+import { MatRadioModule } from '@angular/material/radio';
+
 
 @NgModule({
   declarations: [
@@ -54,7 +58,9 @@ import { SingleproductComponent } from './singleproduct/singleproduct.component'
     WishlistComponent,
     CartComponent,
     MyAccountComponent,
-    SingleproductComponent
+    SingleproductComponent,
+    AddressComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +85,8 @@ import { SingleproductComponent } from './singleproduct/singleproduct.component'
     MatMenuModule,
     MatTooltipModule,
     MatRippleModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatRadioModule
   ],
   providers: [AlertService],
   bootstrap: [AppComponent]

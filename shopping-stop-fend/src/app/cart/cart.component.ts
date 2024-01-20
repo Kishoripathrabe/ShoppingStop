@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AlertService } from '../services/alert.service';
 import { ProductService } from '../services/product.service';
 
 @Component({
@@ -8,14 +10,19 @@ import { ProductService } from '../services/product.service';
 })
 export class CartComponent implements OnInit {
   totalValue=0;
-  cartItems: any;
-  constructor(private productService : ProductService){}
+  cartItems: any; 
+  isEditMode: any;
+  constructor(private productService : ProductService,
+    private alertService:AlertService,
+    private router: Router
+    ){
+   
+  }
   ngOnInit(): void {
     this.productService.showAddToCart().subscribe((data) => {
       this.cartItems = data;
     });
     this.getTotal();
-
   }
   getTotal() {
     this.totalValue = this.cartItems?.reduce((total:any, item:any) => 
@@ -55,6 +62,6 @@ export class CartComponent implements OnInit {
     })
   }
   proceedToBuy() {
-    console.log("proceed to buy button");
+    this.router.navigate(['customerpage','address']);
   }
 }

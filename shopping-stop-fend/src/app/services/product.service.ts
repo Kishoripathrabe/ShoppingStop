@@ -68,5 +68,11 @@ export class ProductService {
   deleteAddress(addId:any){
     return this.http.patch(this.apiUserUrl + "/delete/address",{addId},{headers : this.getAuthHeaders() })
   }
+  getAddressById(addId: any){
+    return this.http.get(this.apiUserUrl + "/get/addressbyid/" + addId,{headers : this.getAuthHeaders() })
+  }
+  placeOrder(order: any){
+    return this.http.post(this.apiUserUrl + "/place/order", { placedOrder: order},{headers : this.getAuthHeaders() } );
+  }
 }
 

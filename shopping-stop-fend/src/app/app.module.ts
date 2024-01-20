@@ -40,6 +40,7 @@ import { SingleproductComponent } from './singleproduct/singleproduct.component'
 import { AddressComponent } from './address/address.component';
 import { PaymentComponent } from './payment/payment.component';
 import { MatRadioModule } from '@angular/material/radio';
+import { OrderedComponent } from './ordered/ordered.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MyAccountComponent,
     SingleproductComponent,
     AddressComponent,
-    PaymentComponent
+    PaymentComponent,
+    OrderedComponent
   ],
   imports: [
     BrowserModule,

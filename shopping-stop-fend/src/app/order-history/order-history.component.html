@@ -1,0 +1,62 @@
+<!-- my-orders.component.html -->
+<div class="container mt-4">
+    <h2>My Orders</h2>
+    <div *ngFor="let order of orders">
+        <mat-card class="mb-3 ">
+            <div class="row">
+                <div class="col-md-9">
+                  <mat-card-header>
+                    <img mat-card-avatar [src]= "order?.cart[0].orgProduct?.picUrl" alt="Order Image" >
+                    <mat-card-title>{{ order.date | date: 'medium' }}</mat-card-title>
+                    <mat-card-subtitle>Status: {{ order.status }}</mat-card-subtitle>
+                  </mat-card-header>
+                    <div *ngFor="let item of order.cart">
+                      <p *ngIf="!order.isopen">{{ item.orgProduct.name }} - Quantity: {{ item.quantity }}</p>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex justify-content-end">
+                  <span (click)="orderDetails(order._id)">
+                    <button mat-icon-button class="btn btn-outline-info" *ngIf="order.isopen">
+                      <mat-icon>arrow_upward</mat-icon>
+                    </button>
+                    <button mat-icon-button class="btn btn-outline-info" *ngIf="!order.isopen">
+                      <mat-icon>arrow_downward</mat-icon>
+                    </button>
+                  </span>
+                </div>
+            </div>
+            <mat-card-content>
+                <div *ngIf="order.isopen">
+                    <table class="table">
+                        <tbody>
+                            <tr *ngFor="let item of order.cart">
+                                <td><img [src]="item?.orgProduct?.picUrl"
+                                        routerLink="/customerpage/singleproduct/{{ item._id }}"
+                                        alt="{{ item?.orgProduct?.name }}" height="120"></td>
+                                <td>{{ item?.orgProduct?.name }}</td>
+                                <td>Quantity: {{ item?.quantity }}</td>
+                                <td>Price:{{ item?.orgProduct?.price }}</td>
+                                <td>Total: {{ item?.quantity * item?.orgProduct?.price }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div *ngIf="order.isopen" class="card border-success " style="max-width: 48rem;">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">Address</h5>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title"><strong>{{ order?.address?.full_name }}</strong></h4>
+                        <p class="card-text">
+                            <strong>Phone:</strong> {{ order?.address?.phome_number }}<br>
+                            <strong>Address:</strong> {{ order?.address?.address_line1 }}, {{
+                            order?.address?.address_line2 }}, {{
+                            order?.address?.city }}, {{ order?.address?.state }}<br>
+                            <strong>Pincode:</strong> {{ order?.address?.pincode }}
+                        </p>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

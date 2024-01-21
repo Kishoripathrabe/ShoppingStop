@@ -27,7 +27,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AlertService } from './services/alert.service';
 import { HomeComponent } from './home/home.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserMgmComponent } from './user-mgm/user-mgm.component';
 import { ProductMgmComponent } from './product-mgm/product-mgm.component';
 import { CustomerPageComponent } from './customer-page/customer-page.component';
@@ -41,6 +40,7 @@ import { AddressComponent } from './address/address.component';
 import { PaymentComponent } from './payment/payment.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { OrderedComponent } from './ordered/ordered.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
 
 
 @NgModule({
@@ -50,7 +50,6 @@ import { OrderedComponent } from './ordered/ordered.component';
     SignupComponent,
     HomeComponent,
     AdminPageComponent,
-    DashboardComponent,
     UserMgmComponent,
     ProductMgmComponent,
     CustomerPageComponent,
@@ -62,7 +61,8 @@ import { OrderedComponent } from './ordered/ordered.component';
     SingleproductComponent,
     AddressComponent,
     PaymentComponent,
-    OrderedComponent
+    OrderedComponent,
+    OrderHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -85,6 +85,7 @@ import { OrderedComponent } from './ordered/ordered.component';
     MatSelectModule,
     MatOptionModule,
     MatMenuModule,
+    MatCardModule,
     MatTooltipModule,
     MatRippleModule,
     MatProgressBarModule,

@@ -1,60 +1,51 @@
-<!-- payment.component.html -->
 <div class="m-4">
-    <!-- <div class="container row ">
-      <div *ngFor="let item of products">
-        <div class="card">
-          <img src="{{item?.orgProduct?.image}}" class="card-img-top" alt="{{ item?.orgProduct?.name }}">
-          <div class="card-body">
-            <h5 class="card-title">{{ item?.orgProduct?.name }}</h5>
-            <p class="card-text">Quantity: {{ item?.quantity }}</p>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <div class="container mt-5">
-      <h2>Place your order</h2>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of products">
-            <td><img [src]="item?.orgProduct?.picUrl" routerLink="/customerpage/singleproduct/{{ item._id }}" alt="{{ item?.orgProduct?.name }}" height="120"></td>
-            <td>{{ item?.orgProduct?.name }}</td>
-            <td>{{ item?.quantity  }}</td>
-            <td>{{ item?.orgProduct?.price  }}</td>
-            <td>{{ item?.quantity * item?.orgProduct?.price }}</td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="text-right">
-        <strong>Total: {{ this.totalValue  }}</strong>
-      </div>
-  <div class="card border-primary m-2" style="max-width: 18rem;">
-    <div class="card-header bg-primary text-white">
-      <h5 class="mb-0">Deliver To:</h5>
+  <div class="container mt-5">
+    <h2>Place your order</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of products">
+          <td><img [src]="item?.orgProduct?.picUrl" routerLink="/customerpage/singleproduct/{{ item._id }}"
+              alt="{{ item?.orgProduct?.name }}" height="120"></td>
+          <td>{{ item?.orgProduct?.name }}</td>
+          <td>{{ item?.quantity }}</td>
+          <td>{{ item?.orgProduct?.price }}</td>
+          <td>{{ item?.quantity * item?.orgProduct?.price }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-right">
+      <strong>Total: {{ this.totalValue }}</strong>
     </div>
-    <div class="card-body">
-      <h4 class="card-title"><strong>{{ selectedAddress?.name }}</strong></h4>
-      <p class="card-text">
-        <strong>Phone:</strong> {{ selectedAddress?.mobileno }}<br>
-        <strong>Address:</strong> {{ selectedAddress?.address1 }}, {{ selectedAddress?.address2 }}, {{ selectedAddress?.city }}, {{ selectedAddress?.state }}<br>
-        <strong>Pincode:</strong> {{ selectedAddress?.pincode }}
-      </p>
+    <div class="card border-primary m-2" style="max-width: 18rem;">
+      <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">Deliver To:</h5>
+      </div>
+      <div class="card-body">
+        <h4 class="card-title"><strong>{{ selectedAddress?.name }}</strong></h4>
+        <p class="card-text">
+          <strong>Phone:</strong> {{ selectedAddress?.mobileno }}<br>
+          <strong>Address:</strong> {{ selectedAddress?.address1 }}, {{ selectedAddress?.address2 }}, {{
+          selectedAddress?.city }}, {{ selectedAddress?.state }}<br>
+          <strong>Pincode:</strong> {{ selectedAddress?.pincode }}
+        </p>
+      </div>
+    </div>
+    <div class="row m-2 ">
+      <h2>Payment Mode</h2>
+      <mat-radio-group name="paymentMethod" [(ngModel)]="selectedPaymentMethod"
+        (ngModelChange)="paymentMethodChange($event)">
+        <mat-radio-button color="primary" value="cod">Pay with Cash on Delivery (COD)</mat-radio-button> &nbsp;
+        <mat-radio-button color="primary" value="upi">Pay with PhonePay</mat-radio-button>
+      </mat-radio-group>
+      <button class="btn btn-primary btn-md mt-5" (click)="placeOrder()">Place Order</button>
     </div>
   </div>
-  <div class = "row m-2 ">
-  <h2>Payment Mode</h2>
-    <mat-radio-group name="paymentMethod" [(ngModel)]="selectedPaymentMethod" (ngModelChange)="paymentMethodChange($event)">
-    <mat-radio-button color="primary" value="cod">Pay with Cash on Delivery (COD)</mat-radio-button> &nbsp;
-    <mat-radio-button color="primary" value="upi">Pay with PhonePay</mat-radio-button>
-    </mat-radio-group>
-    <button class="btn btn-primary btn-md mt-5" (click)="placeOrder()">Place Order</button>
-  </div>
-</div>

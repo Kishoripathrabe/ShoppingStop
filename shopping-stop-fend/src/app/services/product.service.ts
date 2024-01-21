@@ -74,5 +74,8 @@ export class ProductService {
   placeOrder(order: any){
     return this.http.post(this.apiUserUrl + "/place/order", { placedOrder: order},{headers : this.getAuthHeaders() } );
   }
+  getOrderHistory(){
+    return this.http.get(this.apiUserUrl + "/get/orderhistory",{headers : this.getAuthHeaders() })
+  }
 }
 

@@ -11,6 +11,7 @@ import { NonadminGuard } from './guards/nonadmin.guard';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { MyAccountComponent } from './my-account/my-account.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
 import { OrderedComponent } from './ordered/ordered.component';
 import { PaymentComponent } from './payment/payment.component';
 import { ProductMgmComponent } from './product-mgm/product-mgm.component';
@@ -32,6 +33,7 @@ const routes: Routes = [
         { path: 'ordered', component: OrderedComponent},
         { path: 'wishlist', component: WishlistComponent },
         { path: 'myaccount', component: MyAccountComponent },
+        { path: 'myorders', component: OrderHistoryComponent},
         { path: 'singleproduct/:id', component: SingleproductComponent},
         { path: '',redirectTo:"home",pathMatch:"full"},
       ]},

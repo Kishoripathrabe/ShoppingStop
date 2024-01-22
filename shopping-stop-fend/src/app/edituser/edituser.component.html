@@ -1,0 +1,42 @@
+
+<div class="container mt-4">
+  <h2>{{ user?.first_name }} {{ user?.last_name }} Orders</h2>
+  <div *ngFor="let order of orderArr">
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Order ID: {{ order?._id }}</h5>
+        <p class="card-text">Status: {{ order?.status }}</p>
+        <p class="card-text">Mode of Payment: {{ order?.MOP }}</p>
+        <p class="card-text">Date: {{ order?.date | date:'medium' }}</p>
+        <p class="card-text">Address:</p>
+        <p class="card-text">
+          {{ order?.address.full_name }}<br>
+          {{ order?.address.address_line1 }}<br>
+          {{ order?.address.address_line2  }}
+          {{ order?.address.city }}, {{ order?.address?.state }} - {{ order?.address?.pincode }}
+        </p>
+        <div *ngFor="let item of order.cart">
+          <div class="d-flex mb-2">
+            <img [src]="item?.orgProduct?.picUrl" alt="Product Image" class="img-thumbnail mr-2" width="50">
+            <div>
+              <p>&nbsp;&nbsp;  {{ item?.orgProduct?.name }}</p>
+              <p>&nbsp;&nbsp;  Quantity: {{ item?.quantity }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="statusDropdown">Update Status:</label>
+          <select class="form-control" id="statusDropdown" (change)="updateOrderStatus(order?._id, $event)">
+            <option value="default">Please Select Status</option>
+            <option value="Order Placed">Order Placed</option>
+            <option value="Shipped">Shipped</option>
+            <option value="Dispatched">Dispatched</option>
+            <option value="Out for Delivery">Out for Delivery</option>
+            <option value="Delivered">Delivered</option>
+            <option value="Cancelled">Cancelled</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -23,4 +23,14 @@ export class UserService {
     return this.http.patch(this.apiUserUrl + "/update/me",{updatedMe:data},{headers : this.getAuthHeaders() })
 
   }
+  getCustomerData() {
+    return this.http.get(this.apiUrl + "/get/customer/data",{headers : this.getAuthHeaders() })
+  }
+  getCustomerInfo(userId : any) {
+    return this.http.get(this.apiUrl + "/get/customer/info/" + userId,{headers : this.getAuthHeaders() })
+  }
+  updateOrderStatus(orderId: any,orderStatus: any){
+    return this.http.patch(this.apiUrl + "/update/orderstatus",{orderId,orderStatus },{headers : this.getAuthHeaders() })
+
+  }
 }

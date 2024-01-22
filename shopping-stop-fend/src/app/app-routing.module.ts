@@ -4,6 +4,7 @@ import { AddressComponent } from './address/address.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { CartComponent } from './cart/cart.component';
 import { CustomerPageComponent } from './customer-page/customer-page.component';
+import { EdituserComponent } from './edituser/edituser.component';
 import { AdminGuard } from './guards/admin.guard';
 import { AnonGuard } from './guards/anon.guard';
 import { AuthGuard } from './guards/auth.guard';
@@ -40,6 +41,7 @@ const routes: Routes = [
       {path:'adminpage',canActivate:[AuthGuard,AdminGuard],component:AdminPageComponent,children:[
         { path: '', redirectTo: 'user-management', pathMatch: 'full' },
         { path: 'user-management', component: UserMgmComponent },
+        { path: 'edit-user/:userId' , component: EdituserComponent},
         { path: 'product-management', component: ProductMgmComponent }
       ]},
       ]

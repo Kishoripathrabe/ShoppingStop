@@ -41,6 +41,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { OrderedComponent } from './ordered/ordered.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
+import { EdituserComponent } from './edituser/edituser.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
     AddressComponent,
     PaymentComponent,
     OrderedComponent,
-    OrderHistoryComponent
+    OrderHistoryComponent,
+    EdituserComponent
   ],
   imports: [
     BrowserModule,

@@ -15,25 +15,31 @@ export class HomeComponent {
   pageSize = 4;
   currentPage = 1;
   productsLoaded: any;
+  searchvalue:any='';
   constructor( private alert: AlertService, private productService: ProductService,private router:Router ) {
-    this.productService.getProductsCount().subscribe((res:any) =>{
+    this.productService.getSearchedCount(this.searchvalue).subscribe((res:any) =>{
       this.productCount = res.data;
-      this.loadProducts();
+      this.loadSearchedProducts({page:0});
     })
   }
-  
-  loadProducts(): void {
-    this.productService.getLoadedProducts(this.currentPage, this.pageSize)
-      .subscribe((response: any) => {
-        this.products = response;
-      }, (error: any) => {
-        console.error(error);
-      });
-  }
+  loadSearchedProducts(event:any){
+    this.currentPage = event?.page + 1;
+      this.productService.getSearchItem(this.searchvalue, this.currentPage,this.pageSize).subscribe((data: any) =>{
+        this.products = data;
+      })
+    }
+    onSearch() {
+      this.resetPageData();
+      this.productService.getSearchedCount(this.searchvalue).subscribe((res: any) =>{
+          this.productCount = res.data;
+          this.loadSearchedProducts({page:0})
+          console.log(this.productCount);
+        })
+      }
 
-  onPageChange(event: any): void {
-    this.currentPage = event.page + 1;
-    this.loadProducts();
+  resetPageData(){
+    this.pageSize = 4;
+    this.currentPage = 1;
   }
 
 
@@ -65,4 +71,8 @@ export class HomeComponent {
       this.alert.success(data?.msg);
     });
   }
-}
+
+   
+ 
+  
+  }

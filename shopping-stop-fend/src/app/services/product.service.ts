@@ -31,6 +31,13 @@ export class ProductService {
   getAllProductsCustumer() {
     return this.http.get(this.apiUserUrl + "/get/all/products",{headers : this.getAuthHeaders() });
   }
+  getProductsCount() {
+    return this.http.get(this.apiUserUrl + "/get/products/count", { headers: this.getAuthHeaders() });
+  }
+  getLoadedProducts(currentPage: any, pageSize: any) {
+    const params = { currentPage, pageSize };
+    return this.http.get(this.apiUserUrl + "/get/loaded/products",{ params, headers: this.getAuthHeaders() });
+  }
   addToWishlist(id: any) {
     return this.http.patch(this.apiUserUrl+"/add/wishlist",{pid:id},{headers : this.getAuthHeaders() });
   }

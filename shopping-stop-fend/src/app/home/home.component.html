@@ -1,5 +1,93 @@
-<h2>Products</h2>
-<div class="container">
+<!-- home.component.html -->
+
+<div class="royal-products">
+  <h2>Products</h2>
+  <div class="card">
+    <p-dataView #dv [value]="products">
+      <ng-template let-prod pTemplate="listItem">
+        <div class="product-item col-6 p-2">
+          <div class="product-details flex flex-column xl:flex-row xl:align-items-start p-4 gap-4">
+            <img class="product-image w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round" [src]="prod.picUrl" alt="Product Image" />
+            <div class="product-info flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
+              <div class="info-left flex flex-column align-items-center sm:align-items-start gap-3">
+                <div class="product-name text-2xl font-bold text-900">{{ prod.name }}</div>
+                <div class="product-description flex align-items-center gap-3">
+                  <span class="tag-info flex align-items-center gap-2">
+                    <i class="pi pi-tag"></i>
+                    <span class="font-semibold">{{ prod.desc | truncate:20 }}</span>
+                  </span>
+                </div>
+                <div class="action-buttons">
+                  <button mat-button mat-raised-button color="primary" (click)="addToCart(prod._id)">
+                    {{ prod.inCart ? 'Go to Cart' : 'Add to Cart'}}
+                  </button>
+                  <button mat-button mat-raised-button color="accent" (click)="addToWishlist(prod._id)">
+                    {{ prod.inWishlist ? 'Remove from Wishlist' : 'Add to Wishlist'}}
+                  </button>
+                </div>
+                <span class="price text-2xl font-semibold">{{ '$' + prod.price }}</span>
+              </div>
+              <div class="info-right flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2">
+                <!-- Additional details or buttons can be added here if needed -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </p-dataView>
+    <div class="card flex justify-content-center">
+      <p-paginator (onPageChange)="onPageChange($event)" [rows]="pageSize" [totalRecords]="productCount"></p-paginator>
+  </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <h2>Products</h2>
+
+
+<div class="card">
+  <p-dataView #dv [value]="products">
+      <ng-template let-prod pTemplate="listItem">
+          <div class="col-6 p-2">
+              <div class="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4">
+                  <img class="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round" [src]="prod.picUrl"/>
+                  <div class="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
+                      <div class="flex flex-column align-items-center sm:align-items-start gap-3">
+                          <div class="text-2xl font-bold text-900">{{ prod.name }}</div>
+                          <div class="flex align-items-center gap-3">
+                              <span class="flex align-items-center gap-2">
+                                  <i class="pi pi-tag"></i>
+                                  <span class="font-semibold">{{ prod.desc| truncate:20 }}</span>  
+                              </span>
+                          </div>
+                          <span><button mat-button mat-raised-button color="primary"  (click)="addToCart(prod._id)" >{{prod.inCart?'Go to Cart' : 'Add to Cart'}}</button> &nbsp;
+                            <button mat-button mat-raised-button color="accent" (click)="addToWishlist(prod._id)" >{{prod.inWishlist?'Remove from Wishlist':'Add to Wishlist'}}</button></span>
+                            <span class="text-2xl font-semibold">{{'$'+ prod.price }}</span>
+
+                      </div>
+                      <div class="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2">
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </ng-template>
+  </p-dataView>
+</div> -->
+
+
+
+
+
+<!-- <div class="container">
     <div class="row mb-3">
       <div class="col-4 mb-4" *ngFor ="let prod of products">
         <mat-card  >
@@ -24,5 +112,5 @@
         </mat-card>
       </div>
     </div>
-  </div>
+  </div> -->
 

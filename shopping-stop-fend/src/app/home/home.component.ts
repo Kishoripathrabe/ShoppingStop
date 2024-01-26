@@ -11,17 +11,31 @@ import { ProductService } from '../services/product.service';
 export class HomeComponent {
   products: any ;
   wishlistArr: any;
+  productCount:any=0;
+  pageSize = 4;
+  currentPage = 1;
+  productsLoaded: any;
   constructor( private alert: AlertService, private productService: ProductService,private router:Router ) {
-    this.getAllProducts();
-    this.productService.showAddToCart().subscribe((data: any) => {
-      console.log(data);
+    this.productService.getProductsCount().subscribe((res:any) =>{
+      this.productCount = res.data;
+      this.loadProducts();
     })
   }
-  getAllProducts() {
-    this.productService.getAllProductsCustumer().subscribe((res: any) => {
-      this.products = res
-    });
+  
+  loadProducts(): void {
+    this.productService.getLoadedProducts(this.currentPage, this.pageSize)
+      .subscribe((response: any) => {
+        this.products = response;
+      }, (error: any) => {
+        console.error(error);
+      });
   }
+
+  onPageChange(event: any): void {
+    this.currentPage = event.page + 1;
+    this.loadProducts();
+  }
+
 
   addToCart(id: any) {
     this.productService.addToCart(id).subscribe((data: any) =>{

@@ -42,7 +42,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { OrderedComponent } from './ordered/ordered.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { EdituserComponent } from './edituser/edituser.component';
-
+import { DataViewModule, DataViewLayoutOptions } from 'primeng/dataview';
+import { PaginatorModule } from 'primeng/paginator';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { EdituserComponent } from './edituser/edituser.component';
     EdituserComponent
   ],
   imports: [
+  
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
@@ -91,7 +93,9 @@ import { EdituserComponent } from './edituser/edituser.component';
     MatTooltipModule,
     MatRippleModule,
     MatProgressBarModule,
-    MatRadioModule
+    MatRadioModule,
+    DataViewModule,
+    PaginatorModule
   ],
   providers: [AlertService],
   bootstrap: [AppComponent]

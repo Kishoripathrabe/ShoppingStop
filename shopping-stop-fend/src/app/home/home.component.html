@@ -2,11 +2,6 @@
 
 <div class="royal-products">
   <h2>Products</h2>
-  <span>
-    <input placeholder="Search" [(ngModel)]="searchvalue">
-    &nbsp;<button mat-button mat-raised-button color="primary"  (click)= "onSearch()">Search</button>
-  </span>
-  <hr>
   <div class="card">
     <p-dataView #dv [value]="products">
       <ng-template let-prod pTemplate="listItem">

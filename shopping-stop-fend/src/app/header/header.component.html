@@ -11,6 +11,10 @@
         <input matInput style="font-size: small;" placeholder="Search" />
         <mat-icon class="search-icon">search</mat-icon>
       </mat-form-field> -->
+      <span>
+        <input placeholder="Search" [(ngModel)]="searchvalue">
+        &nbsp;<button mat-button mat-raised-button color="primary"  (click)= "onSearch()">Search</button>
+      </span>
       <div>
         <button mat-icon-button aria-label="Wishlist" [routerLink]="['/customerpage/wishlist']" >
             <mat-icon>star</mat-icon>

@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { SearchService } from '../search.service';
 import { AlertService } from '../services/alert.service';
 import { ProductService } from '../services/product.service';
 
@@ -8,7 +10,7 @@ import { ProductService } from '../services/product.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnDestroy {
   products: any ;
   wishlistArr: any;
   productCount:any=0;
@@ -16,7 +18,14 @@ export class HomeComponent {
   currentPage = 1;
   productsLoaded: any;
   searchvalue:any='';
-  constructor( private alert: AlertService, private productService: ProductService,private router:Router ) {
+  private searchSubscription: Subscription;
+
+  constructor( private alert: AlertService, private productService: ProductService,
+    private router:Router , private searchService: SearchService) {
+      this.searchSubscription = this.searchService.searchValue.subscribe((value: any) => {
+        this.searchvalue = value;
+        this.updateSearchResults();
+      });
     this.productService.getSearchedCount(this.searchvalue).subscribe((res:any) =>{
       this.productCount = res.data;
       this.loadSearchedProducts({page:0});
@@ -28,7 +37,7 @@ export class HomeComponent {
         this.products = data;
       })
     }
-    onSearch() {
+    updateSearchResults() {
       this.resetPageData();
       this.productService.getSearchedCount(this.searchvalue).subscribe((res: any) =>{
           this.productCount = res.data;
@@ -41,7 +50,9 @@ export class HomeComponent {
     this.pageSize = 4;
     this.currentPage = 1;
   }
-
+  ngOnDestroy() {
+    this.searchSubscription.unsubscribe();
+  }
 
   addToCart(id: any) {
     this.productService.addToCart(id).subscribe((data: any) =>{

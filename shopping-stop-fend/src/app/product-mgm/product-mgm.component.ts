@@ -54,6 +54,7 @@ export class ProductMgmComponent {
         (response) => {
           this.alert.success('Product added successfully');
           console.log('Product added successfully:', response);
+          this.getAllProducts();
           this.productForm.reset();
         },
         (error) => {
@@ -72,6 +73,7 @@ export class ProductMgmComponent {
     let pdata = product;
     this.addShow = false;
     this.productForm.setValue(pdata);
+    this.getAllProducts();
   }
 
   deleteProduct(id: any) {

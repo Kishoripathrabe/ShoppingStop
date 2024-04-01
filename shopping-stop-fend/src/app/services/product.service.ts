@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthUtils } from '../utility/auth-utils';
 
 @Injectable({
@@ -9,6 +9,8 @@ import { AuthUtils } from '../utility/auth-utils';
 export class ProductService {
   private apiUrl = 'http://localhost:5000/api/admin'; // Replace with your actual API endpoint
   private apiUserUrl = 'http://localhost:5000/api/user';
+     cartCount: BehaviorSubject<any> = new BehaviorSubject<any>(0);
+
   constructor(private http: HttpClient) {}
 
   addProduct(product: any): Observable<any> {
@@ -84,6 +86,10 @@ export class ProductService {
   }
   getOrderHistory(){
     return this.http.get(this.apiUserUrl + "/get/orderhistory",{headers : this.getAuthHeaders() })
+  }
+  inc(){
+    let data=this.cartCount.value+1;
+    this.cartCount.next(data);
   }
 }
 

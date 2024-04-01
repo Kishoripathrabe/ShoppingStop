@@ -30,6 +30,10 @@ export class HomeComponent implements OnDestroy {
       this.productCount = res.data;
       this.loadSearchedProducts({page:0});
     })
+    this.productService.showAddToCart().subscribe((data:any)=>{
+      this.productService.cartCount.next(data.length)
+
+    })
   }
   loadSearchedProducts(event:any){
     this.currentPage = event?.page + 1;
@@ -63,7 +67,8 @@ export class HomeComponent implements OnDestroy {
           }else{
             res['inCart'] = true;
             this.alert.success(data?.msg);
-          }
+            let c= this.productService.cartCount.value+1;
+            this.productService.cartCount.next(c);          }
         }
         return res;
       });

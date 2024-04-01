@@ -21,6 +21,7 @@
             <span>Wishlist</span>
           </button>
           <button mat-icon-button aria-label="Add to Cart" [routerLink]="['/customerpage/cart']" >
+            <span>{{this.count}}</span>
             <mat-icon>add_shopping_cart</mat-icon>
             <span>Go to Cart</span>
           </button>

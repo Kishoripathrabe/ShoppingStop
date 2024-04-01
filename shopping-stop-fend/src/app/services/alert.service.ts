@@ -13,7 +13,6 @@ export class AlertService {
 
   error(message: string, duration = 3500) {
     this.snackBar.open(message, '', {duration, panelClass: ['red-snackbar'],});
-
   }
 
   message(message: string, duration = 3500) {

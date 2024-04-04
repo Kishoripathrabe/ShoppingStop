@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlertService } from '../services/alert.service';
 import { ProductService } from '../services/product.service';
+import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-product-mgm',
   templateUrl: './product-mgm.component.html',
@@ -13,7 +14,8 @@ export class ProductMgmComponent {
   addShow = true;
   pid:any;
 
-  constructor(private alert: AlertService, private productService: ProductService) {}
+  constructor(private alert: AlertService, private productService: ProductService,
+    private userService: UserService) {}
 
   ngOnInit() {
     this.productForm = new FormGroup({
@@ -37,6 +39,7 @@ export class ProductMgmComponent {
     existingProductObject._id = this.pid;
     this.productService.editProduct(existingProductObject).subscribe((data: any) => {
         this.alert.success('Product Updated successfully');
+        this.userService.addActivity('Product Updated successfully').subscribe();
         this.getAllProducts();
         this.addShow=true;
         this.productForm.setValue({});
@@ -53,6 +56,7 @@ export class ProductMgmComponent {
       this.productService.addProduct(this.productForm.value).subscribe(
         (response) => {
           this.alert.success('Product added successfully');
+          this.userService.addActivity('Product added successfully').subscribe();
           console.log('Product added successfully:', response);
           this.getAllProducts();
           this.productForm.reset();
@@ -81,6 +85,8 @@ export class ProductMgmComponent {
     this.productService.deleteProduct(id).subscribe(
       (data: any) => {
         this.alert.success('Product is deleted', data);
+        this.userService.addActivity('Product is deleted').subscribe();
+
         this.getAllProducts();
       },
       (error) => {

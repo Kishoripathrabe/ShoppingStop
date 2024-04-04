@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertService } from '../services/alert.service';
 import { ProductService } from '../services/product.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-address',
@@ -15,6 +16,7 @@ export class AddressComponent implements OnInit {
   selectedAddress: any;
   constructor(private productService : ProductService,
     private alertService:AlertService,
+    private userService:UserService,
     private router: Router){
    
   }
@@ -39,7 +41,7 @@ export class AddressComponent implements OnInit {
       this.getAddress();
       this.alertService.success("Address added successfully");
       this.selectAddress(this.addArr[0])
-
+      this.userService.addActivity("Address added successfully").subscribe();
     })
   }
   
@@ -62,7 +64,8 @@ export class AddressComponent implements OnInit {
   }
   saveEditedAddress(singleAdd:any){
     this.productService.editAddress(singleAdd).subscribe((data:any) =>{
-      this.alertService.success("Address Updated successfully")
+      this.alertService.success("Address Updated successfully");
+      this.userService.addActivity("Address Updated successfully").subscribe();
       singleAdd.isEditMode=false;
     })
   }

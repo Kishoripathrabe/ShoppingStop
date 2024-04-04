@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { SearchService } from '../search.service';
 import { AlertService } from '../services/alert.service';
 import { ProductService } from '../services/product.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -21,7 +22,7 @@ export class HomeComponent implements OnDestroy {
   private searchSubscription: Subscription;
 
   constructor( private alert: AlertService, private productService: ProductService,
-    private router:Router , private searchService: SearchService) {
+    private router:Router , private searchService: SearchService, private userService: UserService) {
       this.searchSubscription = this.searchService.searchValue.subscribe((value: any) => {
         this.searchvalue = value;
         this.updateSearchResults();
@@ -67,6 +68,7 @@ export class HomeComponent implements OnDestroy {
           }else{
             res['inCart'] = true;
             this.alert.success(data?.msg);
+            this.userService.addActivity(data?.msg).subscribe();
             let c= this.productService.cartCount.value+1;
             this.productService.cartCount.next(c);          }
         }
@@ -85,6 +87,7 @@ export class HomeComponent implements OnDestroy {
         return res;
       });
       this.alert.success(data?.msg);
+      this.userService.addActivity(data?.msg).subscribe();
     });
   }
 

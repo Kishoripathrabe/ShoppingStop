@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertService } from '../services/alert.service';
 import { AuthUtils } from '../utility/auth-utils';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ export class LoginComponent {
   loginForm: FormGroup;
   loading = false;
 
-  constructor( private http:HttpClient, private router: Router,private alert:AlertService) {
+  constructor( private http:HttpClient, private router: Router,private alert:AlertService,
+    private userService: UserService) {
     this.loginForm = new FormGroup({
       email: new FormControl("kp@gmail.com", [Validators.required, Validators.email]),
       password: new FormControl("mj@gmail.com", [Validators.required])
@@ -29,6 +31,8 @@ export class LoginComponent {
       AuthUtils.setUserType(data.type)
       this.loading = false;
       this.alert.success(data.msg);
+      if(data.type == "customer")
+      this.userService.addActivity(data?.msg).subscribe();
       this.router.navigate(['customerpage']);
     }
     },(err)=>{

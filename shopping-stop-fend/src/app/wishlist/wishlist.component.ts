@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertService } from '../services/alert.service';
 import { ProductService } from '../services/product.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-wishlist',
@@ -13,14 +14,14 @@ export class WishlistComponent implements OnInit{
    ngOnInit() {
     this.getAllWishlist();
 } 
-constructor(private productService:ProductService,private alert:AlertService,private router:Router){
+constructor(private productService:ProductService,private alert:AlertService,
+  private router:Router, private userService: UserService){
 this.getAllWishlist();
 }
 
 getAllWishlist(){
   this.productService.getWishlist().subscribe(data=>{
     this.products = data;
-    console.log("🚀 ~ WishlistComponent ~ this.productService.getWishlist ~ data:", data)
   })
 }
 
@@ -34,6 +35,8 @@ addToCart(id: any){
         }else{
           res['inCart'] = true;
           this.alert.success(data?.msg);
+          this.userService.addActivity(data?.msg).subscribe();
+
         }
       }
       return res;
@@ -45,6 +48,7 @@ addToCart(id: any){
 addToWishlist(id : any){
   this.productService.addToWishlist(id).subscribe((data:any) => {
     this.alert.success(data?.msg);
+    this.userService.addActivity(data?.msg).subscribe();
     this.products=this.products.filter((res:any)=>{
         return (res._id!==id)
     })

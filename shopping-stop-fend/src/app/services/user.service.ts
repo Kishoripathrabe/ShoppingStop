@@ -31,6 +31,12 @@ export class UserService {
   }
   updateOrderStatus(orderId: any,orderStatus: any){
     return this.http.patch(this.apiUrl + "/update/orderstatus",{orderId,orderStatus },{headers : this.getAuthHeaders() })
-
+  }
+  addActivity( msg: any) {
+    return this.http.post(this.apiUserUrl + "/add/activity", {data:{}, msg}, {headers : this.getAuthHeaders() } )
+  }
+  getActivity(userId: any) {
+    console.log("getctivity caled");
+    return this.http.get(this.apiUrl + "/get/activity/" + userId,{headers : this.getAuthHeaders() })
   }
 }

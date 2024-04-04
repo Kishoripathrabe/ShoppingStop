@@ -1,0 +1,17 @@
+<div class="container">
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>Message</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of activity.activities">
+          <td>{{ item.msg }}</td>
+          <td>{{ item?.date }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from '../services/alert.service';
 import { ProductService } from '../services/product.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-singleproduct',
@@ -16,7 +17,8 @@ export class SingleproductComponent implements OnInit {
     private route: ActivatedRoute,
     private alert: AlertService,
     private router: Router,
-    private productService: ProductService
+    private productService: ProductService,
+    private userService:  UserService
   ) {
     this.getProductDetails();
   }
@@ -51,6 +53,7 @@ export class SingleproductComponent implements OnInit {
     this.productService.addToWishlist(id).subscribe((data: any) => {
       this.product['inWishlist'] = data.isAdded;
       this.alert.success(data?.msg);
+      this.userService.addActivity(data?.msg).subscribe();
     });
   }
 }

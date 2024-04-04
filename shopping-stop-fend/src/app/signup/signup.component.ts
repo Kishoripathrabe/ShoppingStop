@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertService } from '../services/alert.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-signup',
@@ -13,7 +14,8 @@ export class SignupComponent {
   signupForm: FormGroup;
   loading = false;
 
-  constructor( private http:HttpClient, private router: Router,private alert:AlertService) {
+  constructor( private http:HttpClient, private router: Router,private alert:AlertService,
+    private userService: UserService) {
     this.signupForm = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required]),
@@ -27,6 +29,8 @@ export class SignupComponent {
    this.http.post("http://localhost:5000/api/user/signup",this.signupForm.value).subscribe((data:any) => {
       this.loading = false;
       this.alert.success("User Created Successfully");
+      this.userService.addActivity("User Created Successfully").subscribe();
+
       this.router.navigate(['']);
     },(err)=>{
       this.alert.error(err.error.msg);

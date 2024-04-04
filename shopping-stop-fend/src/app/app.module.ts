@@ -44,6 +44,7 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
 import { EdituserComponent } from './edituser/edituser.component';
 import { DataViewModule, DataViewLayoutOptions } from 'primeng/dataview';
 import { PaginatorModule } from 'primeng/paginator';
+import { ActivitypageComponent } from './activitypage/activitypage.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { PaginatorModule } from 'primeng/paginator';
     PaymentComponent,
     OrderedComponent,
     OrderHistoryComponent,
-    EdituserComponent
+    EdituserComponent,
+    ActivitypageComponent
   ],
   imports: [
   
@@ -96,7 +98,7 @@ import { PaginatorModule } from 'primeng/paginator';
     MatRadioModule,
     DataViewModule,
     PaginatorModule
-  ],
+    ],
   providers: [AlertService],
   bootstrap: [AppComponent]
 })

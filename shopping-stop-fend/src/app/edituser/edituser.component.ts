@@ -36,6 +36,7 @@ export class EdituserComponent {
     }
     this.userService.updateOrderStatus(orderId, newStatus).subscribe((data:any) => {
       this.alertService.success(data?.msg);
+      this.userService.addActivity(data?.msg).subscribe();
       this.getUser();
     });
   }

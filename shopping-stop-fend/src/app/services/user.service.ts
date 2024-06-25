@@ -7,8 +7,8 @@ import { AuthUtils } from '../utility/auth-utils';
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'http://localhost:5000/api/admin'; // Replace with your actual API endpoint
-  private apiUserUrl = 'http://localhost:5000/api/user';
+  private apiUrl = 'https://shoppingstopbackend.onrender.com/api/admin'; // Replace with your actual API endpoint
+  private apiUserUrl = 'https://shoppingstopbackend.onrender.com/api/user';
   constructor(private http: HttpClient) {}
 
 

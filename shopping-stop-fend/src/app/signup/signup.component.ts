@@ -26,7 +26,7 @@ export class SignupComponent {
 
   signup() {
     this.loading = true;
-   this.http.post("http://localhost:5000/api/user/signup",this.signupForm.value).subscribe((data:any) => {
+   this.http.post("https://shoppingstopbackend.onrender.com/api/user/signup",this.signupForm.value).subscribe((data:any) => {
       this.loading = false;
       this.alert.success("User Created Successfully");
       this.userService.addActivity("User Created Successfully").subscribe();

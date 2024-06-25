@@ -25,7 +25,7 @@ export class LoginComponent {
 
   login() {
     this.loading = true;
-   this.http.get("http://localhost:5000/api/user/login",{params:this.loginForm.value}).subscribe((data:any) => {
+   this.http.get("https://shoppingstopbackend.onrender.com/api/user/login",{params:this.loginForm.value}).subscribe((data:any) => {
     if(data.token){
       AuthUtils.setAuthToken(data.token)
       AuthUtils.setUserType(data.type)

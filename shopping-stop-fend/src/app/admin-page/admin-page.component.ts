@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthUtils } from '../utility/auth-utils';
 
 @Component({
   selector: 'app-admin-page',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin-page.component.scss']
 })
 export class AdminPageComponent {
+constructor(){
 
+}
+logout(){
+    AuthUtils.removeAuthToken();
+    AuthUtils.removeUserType();
+    location.reload();
+}
 }

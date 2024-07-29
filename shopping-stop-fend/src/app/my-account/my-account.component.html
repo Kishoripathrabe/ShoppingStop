@@ -28,6 +28,13 @@
             <span class="col-2" *ngIf="!isEditMode">{{ user?.last_name }}</span>
             <input class="col form-control" *ngIf="isEditMode" [(ngModel)]="user.last_name" />
           </li>
+         <li class="row m-2">
+          <strong class="col-2">Language:</strong>
+          <span class="col-2" *ngIf="!isEditMode">{{ this.languageObject[user?.language]  }}</span>
+          <select class="col form-control" *ngIf="isEditMode" [(ngModel)]="user.language">
+            <option *ngFor="let lang of languages" [value]="lang.value">{{ lang.name }}</option>
+          </select>
+        </li>
         </ul>
         <button class="btn col-12    btn-success mt-3" *ngIf="isEditMode" (click)="saveChanges()">Save Changes</button>
       </div>

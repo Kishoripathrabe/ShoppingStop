@@ -1,0 +1,11 @@
+{
+    "HEADER": {
+        "SEARCH_PLACEHOLDER": "खोजें",
+        "SEARCH": "खोजें",
+        "WISHLIST": "इच्छा सूची",
+        "GO_TO_CART": "कार्ट में जाएं",
+        "MY_ORDERS": "मेरे आदेश",
+        "MY_ACCOUNT": "मेरा खाता",
+        "LOGOUT": "लॉग आउट"
+    }
+}

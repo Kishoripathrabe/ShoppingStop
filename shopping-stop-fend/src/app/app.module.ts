@@ -23,7 +23,7 @@ import { MatOptionModule, MatRippleModule } from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AlertService } from './services/alert.service';
 import { HomeComponent } from './home/home.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
@@ -45,6 +45,12 @@ import { EdituserComponent } from './edituser/edituser.component';
 import { DataViewModule, DataViewLayoutOptions } from 'primeng/dataview';
 import { PaginatorModule } from 'primeng/paginator';
 import { ActivitypageComponent } from './activitypage/activitypage.component';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+
+export function HttpLoaderFactory(http: HttpClient){
+  return new TranslateHttpLoader(http,'./assets/i18n/','.json');
+}
 
 @NgModule({
   declarations: [
@@ -97,7 +103,14 @@ import { ActivitypageComponent } from './activitypage/activitypage.component';
     MatProgressBarModule,
     MatRadioModule,
     DataViewModule,
-    PaginatorModule
+    PaginatorModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
     ],
   providers: [AlertService],
   bootstrap: [AppComponent]

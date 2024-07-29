@@ -1,0 +1,11 @@
+{
+    "HEADER": {
+        "SEARCH_PLACEHOLDER": "Search",
+        "SEARCH": "Search",
+        "WISHLIST" : "Wishlist",
+        "GO_TO_CART" : "Go to Cart",
+        "MY_ORDERS" : "My Orders",
+        "MY_ACCOUNT" : "My Account",
+        "LOGOUT" : "Logout"
+    }
+}

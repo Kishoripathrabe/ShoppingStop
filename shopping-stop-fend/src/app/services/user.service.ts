@@ -39,4 +39,7 @@ export class UserService {
     console.log("getctivity caled");
     return this.http.get(this.apiUrl + "/get/activity/" + userId,{headers : this.getAuthHeaders() })
   }
+  getLanguage() {
+    return this.http.get(this.apiUserUrl + "/language", { headers: this.getAuthHeaders() })
+  }
 }

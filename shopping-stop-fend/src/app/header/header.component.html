@@ -12,8 +12,8 @@
         <mat-icon class="search-icon">search</mat-icon>
       </mat-form-field> -->
       <span>
-        <input placeholder="Search" [(ngModel)]="searchvalue">
-        &nbsp;<button mat-button mat-raised-button color="primary"  (click)= "onSearch()">Search</button>
+        <input  placeholder="{{ 'HEADER.SEARCH_PLACEHOLDER' | translate }}" [(ngModel)]="searchvalue">
+        &nbsp;<button mat-button mat-raised-button color="primary"  (click)= "onSearch()">{{'HEADER.SEARCH' | translate}}</button>
       </span>
       <div>
         <button mat-icon-button aria-label="Wishlist" [routerLink]="['/customerpage/wishlist']" >

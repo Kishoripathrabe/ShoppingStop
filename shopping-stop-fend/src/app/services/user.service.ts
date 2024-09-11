@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { AuthUtils } from '../utility/auth-utils';
 
 @Injectable({
@@ -33,7 +33,8 @@ export class UserService {
     return this.http.patch(this.apiUrl + "/update/orderstatus",{orderId,orderStatus },{headers : this.getAuthHeaders() })
   }
   addActivity( msg: any) {
-    return this.http.post(this.apiUserUrl + "/add/activity", {data:{}, msg}, {headers : this.getAuthHeaders() } )
+     this.http.post(this.apiUserUrl + "/add/activity", {data:{}, msg}, {headers : this.getAuthHeaders() } );
+     return of("product added");
   }
   getActivity(userId: any) {
     console.log("getctivity caled");

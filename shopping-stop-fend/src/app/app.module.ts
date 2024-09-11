@@ -45,6 +45,8 @@ import { EdituserComponent } from './edituser/edituser.component';
 import { DataViewModule, DataViewLayoutOptions } from 'primeng/dataview';
 import { PaginatorModule } from 'primeng/paginator';
 import { ActivitypageComponent } from './activitypage/activitypage.component';
+import { TimerService } from './services/timer.service';
+
 
 @NgModule({
   declarations: [
@@ -97,9 +99,9 @@ import { ActivitypageComponent } from './activitypage/activitypage.component';
     MatProgressBarModule,
     MatRadioModule,
     DataViewModule,
-    PaginatorModule
+    PaginatorModule,
     ],
-  providers: [AlertService],
+  providers: [AlertService,TimerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

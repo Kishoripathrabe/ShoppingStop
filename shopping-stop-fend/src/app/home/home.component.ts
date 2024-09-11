@@ -5,6 +5,7 @@ import { SearchService } from '../search.service';
 import { AlertService } from '../services/alert.service';
 import { ProductService } from '../services/product.service';
 import { UserService } from '../services/user.service';
+import { TimerService } from '../services/timer.service';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +23,9 @@ export class HomeComponent implements OnDestroy {
   private searchSubscription: Subscription;
 
   constructor( private alert: AlertService, private productService: ProductService,
-    private router:Router , private searchService: SearchService, private userService: UserService) {
+    private router:Router , private searchService: SearchService, private userService: UserService,private ts:TimerService) {
+      
+      this.ts.setupInactivityTimer();
       this.searchSubscription = this.searchService.searchValue.subscribe((value: any) => {
         this.searchvalue = value;
         this.updateSearchResults();
